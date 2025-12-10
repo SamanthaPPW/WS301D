@@ -40,3 +40,4 @@ npm install -g sass
 Normalement, on a pas besoin de déclarer d'autres fichiers css, mais sinon c'est dans assets/app.js
 
 Dans base twig faut retirer le stylesheet car on l'importe dans le fichier js, donc le block ne sert à rien :) 
+
