@@ -24,7 +24,10 @@ class Reservations
     private ?string $email = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTime $creneau = null;
+    private ?\DateTime $creneau_date = null;
+
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $creneau_heure = null;
 
     #[ORM\Column(length: 255)]
     private ?string $animal = null;
@@ -67,6 +70,17 @@ class Reservations
         return $this;
     }
 
+    public function getCreneauHeure(): ?string
+    {
+        return $this->creneau_heure;
+    }
+
+    public function setCreneauHeure(?string $creneau_heure): static
+    {
+        $this->creneau_heure = $creneau_heure;
+        return $this;
+    }
+
     public function getTelephone(): ?string
     {
         return $this->telephone;
@@ -91,17 +105,17 @@ class Reservations
         return $this;
     }
 
-    public function getCreneau(): ?\DateTime
+    public function getCreneauDate(): ?\DateTime
     {
-        return $this->creneau;
+        return $this->creneau_date;
     }
 
-    public function setCreneau(\DateTime $creneau): static
+    public function setCreneauDate(\DateTime $creneau_date): static
     {
-        $this->creneau = $creneau;
-
+        $this->creneau_date = $creneau_date;
         return $this;
     }
+
 
     public function getAnimal(): ?string
     {

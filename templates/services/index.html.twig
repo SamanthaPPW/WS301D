@@ -1,79 +1,90 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ServicesController!{% endblock %}
+{% block title %}Réservation{% endblock %}
+
 {% block body %}
+    <h1>Réservation</h1>
 
-<div>
-    <h1>Tout le tralala d'avant....</h1>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
 
-    <section id="reservation">
-        <form action="#" method="post">
-            <fieldset>
-                <legend>Informations Générales</legend>
-                <label for="proprio">Nom du propriétaire :</label>
-                <input type="text" id="proprio" name="proprio" required>
-                <label for="tel">Téléphone :</label>
-                <input type="tel" id="tel" name="tel" required>
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
-                <!--A voir pour automatiser l'adresse, la ville et le code postal-->
-                <label for="adresse">Adresse :</label>
-                <input type="text" id="adresse" name="adresse" autocomplete="off" required>
-                <label for="cp">Code postal :</label>
-                <input type="number" id="cp" name="cp" minlength="5" maxlength="5" required>
-                <label for="ville">Ville :</label>
-                <input type="text" id="ville" name="ville" required>
-            </fieldset>
-            <fieldset>
-                <legend>Informations de l’animal</legend>
-                <label for="nomAnimal">Nom de l’animal :</label>
-                <input type="text" id="nomAnimal" name="nomAnimal">
-                <p>Type d’animal :</p>
-                <label>
-                    <input type="radio" name="typeAnimal" value="chien" required>
-                    Chien
-                </label>
-                <label>
-                    <input type="radio" name="typeAnimal" value="chat">
-                    Chat
-                </label>
-                <label>
-                    <input type="radio" name="typeAnimal" value="autre">
-                    Autre
-                </label>
-                <input type="text" name="typeAnimal_autre" placeholder="Préciser si autre">
+    {{ form_start(form) }}
 
-                <label for="race">Race :</label>
-                <select id="race" name="race">
-                    <option value="">Sélectionner une race</option>
-                    <option value="labrador">Labrador</option>
-                    <option value="berger">Berger</option>
-                    <option value="europeen">Chat Européen</option>
-                    <option value="autre">Autre</option>
-                </select>
-                <input type="text" name="race_autre" placeholder="Préciser si autre">
+    <fieldset>
+        <legend>Informations Générales</legend>
+        {{ form_row(form.nom_proprio) }}
+        {{ form_row(form.telephone) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.adresse) }}
+        {{ form_row(form.code_postal) }}
+        {{ form_row(form.ville) }}
+    </fieldset>
 
-                <label for="comportement">Comportement de l’animal :</label>
-                <textarea id="comportement" name="comportement" rows="4"></textarea>
-            </fieldset>
+    <fieldset>
+        <legend>Informations de l’animal</legend>
+        {{ form_row(form.nom_animal) }}
+        {{ form_row(form.animal) }}
+        {{ form_row(form.race) }}
+        {{ form_row(form.comportement_animal) }}
+    </fieldset>
 
-            <!-- Réservation -->
-            <fieldset>
-                <legend>Réservation</legend>
+    <fieldset>
+        <legend>Réservation</legend>
+        {{ form_row(form.creneau_date) }}
+        {{ form_row(form.creneau_heure) }}
+        {{ form_row(form.commentaires) }}
+    </fieldset>
 
-                <p id="duree-message">
-                    Le temps du créneau dépendra de la race de l’animal.
-                </p>
 
-                <label for="creneau">Créneau :</label>
-                <input type="date" id="creneau" name="creneau" required>
+    {{ form_row(form.submit) }}
 
-                <button type="submit">Réserver</button>
-            </fieldset>
+    {{ form_end(form) }}
 
-        </form>
+    <script>
+        const selectRace = document.querySelector("select[name='reservation[race]']");
+        const selectCreneau = document.querySelector("select[name='reservation[creneau_heure]']");
+        const durations = {{ durations|json_encode|raw }};
+        const racesData = {{ racesData|json_encode|raw }};
 
-    </section>
+        function generateTimeOptions(duration) {
+            const startHour = 10;
+            const endHour = 19;
+            const options = [];
+            for (let hour = startHour; hour < endHour; hour++) {
+                let start = hour.toString().padStart(2,'0') + ":00";
+                let endMinutes = duration;
+                let endHourCalc = hour + Math.floor(endMinutes/60);
+                let endMinCalc = endMinutes % 60;
+                if (endHourCalc >= endHour) break;
+                let end = endHourCalc.toString().padStart(2,'0') + ":" + endMinCalc.toString().padStart(2,'0');
+                options.push(start + " - " + end);
+            }
+            return options;
+        }
 
-</div>
+        selectRace.addEventListener("change", () => {
+            const animalTypeInput = document.querySelector("input[name='reservation[animal]']:checked");
+            if (!animalTypeInput) return;
+            const animalType = animalTypeInput.value;
+            const race = selectRace.value;
+
+            selectCreneau.innerHTML = "<option value=''>Sélectionner un créneau</option>";
+            if (!race || race === "autre") return;
+
+            const typePoils = racesData[animalType][race];
+            const duration = durations[typePoils];
+
+            generateTimeOptions(duration).forEach(opt => {
+                const option = document.createElement("option");
+                option.value = opt;
+                option.textContent = opt;
+                selectCreneau.appendChild(option);
+            });
+        });
+
+    </script>
+
 {% endblock %}

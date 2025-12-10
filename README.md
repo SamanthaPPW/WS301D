@@ -95,3 +95,5 @@ CustomLog ${APACHE_LOG_DIR}/symfony_access.log combined
 </VirtualHost>
 ```
 Il faut recharger apache, et normalement c'est ok (a reconfirmer)
+
+Nouveauté, Des fichiers ne sont pas dans le git, il faut faire un composer install dans le dossier du projet sur le docker pour les récupérer.
