@@ -35,6 +35,7 @@ apt install npm
 npm install -g sass
 ```
 
+44455
 <hr>
 
 Normalement, on a pas besoin de déclarer d'autres fichiers css, mais sinon c'est dans assets/app.js
