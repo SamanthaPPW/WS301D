@@ -1,0 +1,33 @@
+{# twig #}
+{# templates/services/show.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la réservation{% endblock %}
+
+{% block body %}
+    {# Affiche correctement les flashs #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
+
+    <h1>Détails de la réservation #{{ reservation.id }}</h1>
+
+    <ul>
+        <li>Animal : {{ reservation.animal }}</li>
+        <li>Race : {{ reservation.race }}</li>
+        <li>Créneau : {{ reservation.creneauHeure }}</li>
+        <li>Date : {{ reservation.creneauDate|date('d/m/Y') }}</li>
+        <li>Nom du propriétaire : {{ reservation.nomProprio }}</li>
+        <li>Téléphone : {{ reservation.telephone }}</li>
+        <li>Email : {{ reservation.email }}</li>
+        <li>Adresse : {{ reservation.adresse }}</li>
+        <li>Code postal : {{ reservation.codePostal }}</li>
+        <li>Ville : {{ reservation.ville }}</li>
+        <li>Comportement de l'animal : {{ reservation.comportementAnimal }}</li>
+        <li>Commentaires : {{ reservation.commentaires }}</li>
+    </ul>
+
+    <a href="{{ path('app_services') }}">Retour</a>
+{% endblock %}

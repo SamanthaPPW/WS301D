@@ -13,8 +13,8 @@ class ReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // Toutes les races possibles (Symfony doit connaître les choix)
         $raceChoices = $options['race_choices'] ?? [];
+        $allCreneaux = $options['all_creneaux'] ?? [];
 
         $builder
             ->add('nom_proprio', TextType::class, ['label' => 'Nom complet du propriétaire'])
@@ -38,8 +38,7 @@ class ReservationType extends AbstractType
             ->add('race', ChoiceType::class, [
                 'label' => 'Race',
                 'choices' => $raceChoices,
-                'required' => false,
-                'expanded' => false,
+                'required' => true,
             ])
             ->add('comportement_animal', TextareaType::class, [
                 'label' => 'Comportement de l’animal',
@@ -51,11 +50,10 @@ class ReservationType extends AbstractType
             ])
             ->add('creneau_heure', ChoiceType::class, [
                 'label' => 'Créneau horaire',
-                'choices' => [], // rempli dynamiquement via JS
-                'required' => true
+                'choices' => array_merge(...array_values($allCreneaux)),
+                'placeholder' => 'Sélectionner un créneau',
+                'required' => true,
             ])
-
-
             ->add('commentaires', TextareaType::class, [
                 'label' => 'Commentaires',
                 'required' => false
@@ -67,7 +65,8 @@ class ReservationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Reservations::class,
-            'race_choices' => [], // Pour passer dynamiquement via le controller
+            'race_choices' => [],
+            'all_creneaux' => []
         ]);
     }
 }

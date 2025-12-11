@@ -5,120 +5,157 @@
 {% block body %}
     <h1>Réservation</h1>
 
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="flash-{{ label }}">{{ message }}</div>
-        {% endfor %}
-    {% endfor %}
-
     {{ form_start(form) }}
 
     <fieldset>
         <legend>Informations Générales</legend>
-        {{ form_row(form.nom_proprio) }}
-        {{ form_row(form.telephone) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.adresse) }}
-        {{ form_row(form.code_postal) }}
-        {{ form_row(form.ville) }}
+        <div class="form-group">
+            {{ form_label(form.nom_proprio) }}
+            {{ form_widget(form.nom_proprio) }}
+            {{ form_errors(form.nom_proprio) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.telephone) }}
+            {{ form_widget(form.telephone) }}
+            {{ form_errors(form.telephone) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.adresse) }}
+            {{ form_widget(form.adresse) }}
+            {{ form_errors(form.adresse) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.code_postal) }}
+            {{ form_widget(form.code_postal) }}
+            {{ form_errors(form.code_postal) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.ville) }}
+            {{ form_widget(form.ville) }}
+            {{ form_errors(form.ville) }}
+        </div>
     </fieldset>
 
     <fieldset>
         <legend>Informations de l’animal</legend>
-        {{ form_row(form.nom_animal) }}
-        {{ form_row(form.animal) }}
-        {{ form_row(form.race) }}
-        {{ form_row(form.comportement_animal) }}
+        <div class="form-group">
+            {{ form_label(form.nom_animal) }}
+            {{ form_widget(form.nom_animal) }}
+            {{ form_errors(form.nom_animal) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.animal) }}
+            {{ form_widget(form.animal) }}
+            {{ form_errors(form.animal) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.race) }}
+            {{ form_widget(form.race) }}
+            {{ form_errors(form.race) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.comportement_animal) }}
+            {{ form_widget(form.comportement_animal) }}
+            {{ form_errors(form.comportement_animal) }}
+        </div>
     </fieldset>
 
     <fieldset>
         <legend>Réservation</legend>
-        {{ form_row(form.creneau_date) }}
-        {{ form_row(form.creneau_heure) }}
-        {{ form_row(form.commentaires) }}
+        <div class="form-group">
+            {{ form_label(form.creneau_date) }}
+            {{ form_widget(form.creneau_date) }}
+            <div id="date-error" style="color:red; font-size:0.9em; margin-top:3px;"></div>
+            {{ form_errors(form.creneau_date) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.creneau_heure) }}
+            {{ form_widget(form.creneau_heure) }}
+            {{ form_errors(form.creneau_heure) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.commentaires) }}
+            {{ form_widget(form.commentaires) }}
+            {{ form_errors(form.commentaires) }}
+        </div>
     </fieldset>
 
-
-    {{ form_row(form.submit) }}
+    <div class="form-group">
+        {{ form_widget(form.submit) }}
+    </div>
 
     {{ form_end(form) }}
 
     <script>
-            const selectRace = document.querySelector("select[name='reservation[race]']");
-            const selectCreneau = document.querySelector("select[name='reservation[creneau_heure]']");
-            const durations = {{ durations|json_encode|raw }};
-            const racesData = {{ racesData|json_encode|raw }};
-            const animalInputs = document.querySelectorAll("input[name='reservation[animal]']");
+        const selectRace = document.querySelector("select[name='reservation[race]']");
+        const selectCreneau = document.querySelector("select[name='reservation[creneau_heure]']");
+        const racesData = {{ racesData|json_encode|raw }};
+        const allCreneaux = {{ allCreneaux|json_encode|raw }};
+        const animalInputs = document.querySelectorAll("input[name='reservation[animal]']");
 
-            function clearOptions(select, label = "Sélectionner") {
+        function clearOptions(select, label="Sélectionner") {
             select.innerHTML = `<option value=''>${label}</option>`;
         }
 
-            function populateRaces(animalType) {
-            clearOptions(selectRace, "Sélectionner une race");
+        function populateRaces(animalType) {
+            clearOptions(selectRace);
             if (!animalType || !racesData[animalType]) return;
             Object.keys(racesData[animalType]).forEach(race => {
-            const option = document.createElement("option");
-            option.value = race;
-            option.textContent = race;
-            selectRace.appendChild(option);
+                const option = document.createElement("option");
+                option.value = race;
+                option.textContent = race;
+                selectRace.appendChild(option);
+            });
+            clearOptions(selectCreneau);
+        }
+
+        animalInputs.forEach(input => {
+            input.addEventListener("change", e => populateRaces(e.target.value));
         });
-            // réinitialiser créneaux quand on change l'animal
-            clearOptions(selectCreneau, "Sélectionner un créneau");
-        }
 
-            function generateTimeOptions(duration) {
-            const startHour = 10;
-            const endHour = 19;
-            const options = [];
-            for (let hour = startHour; hour < endHour; hour++) {
-            let start = hour.toString().padStart(2,'0') + ":00";
-            let endMinutes = duration;
-            let endHourCalc = hour + Math.floor(endMinutes/60);
-            let endMinCalc = endMinutes % 60;
-            if (endHourCalc >= endHour) break;
-            let end = endHourCalc.toString().padStart(2,'0') + ":" + endMinCalc.toString().padStart(2,'0');
-            options.push(start + " - " + end);
-        }
-            return options;
-        }
+        // Au chargement
+        const checkedAnimal = document.querySelector("input[name='reservation[animal]']:checked");
+        if (checkedAnimal) populateRaces(checkedAnimal.value);
 
-            // Écouter le changement des radios "animal" pour remplir les races
-            animalInputs.forEach(input => {
-            input.addEventListener("change", (e) => {
-                populateRaces(e.target.value);
+        selectRace.addEventListener("change", () => {
+            const animalType = document.querySelector("input[name='reservation[animal]']:checked")?.value;
+            const race = selectRace.value;
+            clearOptions(selectCreneau);
+            if (!animalType || !race || race === "autre") return;
+            const typePoils = racesData[animalType][race];
+            allCreneaux[typePoils].forEach(creneau => {
+                const option = document.createElement("option");
+                option.value = creneau;
+                option.textContent = creneau;
+                selectCreneau.appendChild(option);
             });
         });
 
-            // Si une radio est déjà cochée au chargement, remplir les races correspondantes
-            const checkedAnimal = document.querySelector("input[name='reservation[animal]']:checked");
-            if (checkedAnimal) {
-            populateRaces(checkedAnimal.value);
+        const dateInput = document.querySelector("input[name='reservation[creneau_date]']");
+        const submitBtn = document.querySelector("button[type='submit']");
+        const errorDiv = document.getElementById('date-error');
+
+        function checkDay() {
+            const selectedDate = new Date(dateInput.value);
+            const day = selectedDate.getDay(); // 0 = dimanche, 1 = lundi
+            if (day === 0 || day === 1) {
+                errorDiv.textContent = "Les réservations ne sont pas possibles le dimanche et le lundi.";
+                submitBtn.disabled = true;
+            } else {
+                errorDiv.textContent = "";
+                submitBtn.disabled = false;
+            }
         }
 
-            // Quand on choisit une race, remplir les créneaux en fonction du type de poils
-            selectRace.addEventListener("change", () => {
-            const animalTypeInput = document.querySelector("input[name='reservation[animal]']:checked");
-            if (!animalTypeInput) return;
-            const animalType = animalTypeInput.value;
-            const race = selectRace.value;
-
-            clearOptions(selectCreneau, "Sélectionner un créneau");
-            if (!race || race === "autre") return;
-
-            const typePoils = racesData[animalType][race];
-            const duration = durations[typePoils];
-
-            generateTimeOptions(duration).forEach(opt => {
-            const option = document.createElement("option");
-            option.value = opt;
-            option.textContent = opt;
-            selectCreneau.appendChild(option);
-        });
-        });
-    </script>
-
-
+        // Vérifie à chaque changement
+        dateInput.addEventListener("change", checkDay);
+        // Vérifie au chargement si une date est déjà sélectionnée
+        checkDay();
     </script>
 
 {% endblock %}

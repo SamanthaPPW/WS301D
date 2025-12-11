@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ReservationsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 #[ORM\Entity(repositoryClass: ReservationsRepository::class)]
 class Reservations
@@ -23,11 +25,25 @@ class Reservations
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTime $creneau_date = null;
-
-    #[ORM\Column(length: 20, nullable: true)]
+    #[Assert\Callback]
+    public function validateCreneauDate(ExecutionContextInterface $context): void
+    {
+        if ($this->creneau_date) {
+            $dayOfWeek = (int) $this->creneau_date->format('N'); // 1 = lundi, 7 = dimanche
+            if ($dayOfWeek === 1 || $dayOfWeek === 7) {
+                $context->buildViolation('Les réservations ne sont pas possibles le dimanche et le lundi.')
+                    ->atPath('creneau_date') // erreur attachée au champ
+                    ->addViolation();
+            }
+        }
+    }
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(message: "Veuillez sélectionner un créneau.")]
     private ?string $creneau_heure = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $animal = null;
