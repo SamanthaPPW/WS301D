@@ -44,46 +44,80 @@
     {{ form_end(form) }}
 
     <script>
-        const selectRace = document.querySelector("select[name='reservation[race]']");
-        const selectCreneau = document.querySelector("select[name='reservation[creneau_heure]']");
-        const durations = {{ durations|json_encode|raw }};
-        const racesData = {{ racesData|json_encode|raw }};
+            const selectRace = document.querySelector("select[name='reservation[race]']");
+            const selectCreneau = document.querySelector("select[name='reservation[creneau_heure]']");
+            const durations = {{ durations|json_encode|raw }};
+            const racesData = {{ racesData|json_encode|raw }};
+            const animalInputs = document.querySelectorAll("input[name='reservation[animal]']");
 
-        function generateTimeOptions(duration) {
+            function clearOptions(select, label = "Sélectionner") {
+            select.innerHTML = `<option value=''>${label}</option>`;
+        }
+
+            function populateRaces(animalType) {
+            clearOptions(selectRace, "Sélectionner une race");
+            if (!animalType || !racesData[animalType]) return;
+            Object.keys(racesData[animalType]).forEach(race => {
+            const option = document.createElement("option");
+            option.value = race;
+            option.textContent = race;
+            selectRace.appendChild(option);
+        });
+            // réinitialiser créneaux quand on change l'animal
+            clearOptions(selectCreneau, "Sélectionner un créneau");
+        }
+
+            function generateTimeOptions(duration) {
             const startHour = 10;
             const endHour = 19;
             const options = [];
             for (let hour = startHour; hour < endHour; hour++) {
-                let start = hour.toString().padStart(2,'0') + ":00";
-                let endMinutes = duration;
-                let endHourCalc = hour + Math.floor(endMinutes/60);
-                let endMinCalc = endMinutes % 60;
-                if (endHourCalc >= endHour) break;
-                let end = endHourCalc.toString().padStart(2,'0') + ":" + endMinCalc.toString().padStart(2,'0');
-                options.push(start + " - " + end);
-            }
+            let start = hour.toString().padStart(2,'0') + ":00";
+            let endMinutes = duration;
+            let endHourCalc = hour + Math.floor(endMinutes/60);
+            let endMinCalc = endMinutes % 60;
+            if (endHourCalc >= endHour) break;
+            let end = endHourCalc.toString().padStart(2,'0') + ":" + endMinCalc.toString().padStart(2,'0');
+            options.push(start + " - " + end);
+        }
             return options;
         }
 
-        selectRace.addEventListener("change", () => {
+            // Écouter le changement des radios "animal" pour remplir les races
+            animalInputs.forEach(input => {
+            input.addEventListener("change", (e) => {
+                populateRaces(e.target.value);
+            });
+        });
+
+            // Si une radio est déjà cochée au chargement, remplir les races correspondantes
+            const checkedAnimal = document.querySelector("input[name='reservation[animal]']:checked");
+            if (checkedAnimal) {
+            populateRaces(checkedAnimal.value);
+        }
+
+            // Quand on choisit une race, remplir les créneaux en fonction du type de poils
+            selectRace.addEventListener("change", () => {
             const animalTypeInput = document.querySelector("input[name='reservation[animal]']:checked");
             if (!animalTypeInput) return;
             const animalType = animalTypeInput.value;
             const race = selectRace.value;
 
-            selectCreneau.innerHTML = "<option value=''>Sélectionner un créneau</option>";
+            clearOptions(selectCreneau, "Sélectionner un créneau");
             if (!race || race === "autre") return;
 
             const typePoils = racesData[animalType][race];
             const duration = durations[typePoils];
 
             generateTimeOptions(duration).forEach(opt => {
-                const option = document.createElement("option");
-                option.value = opt;
-                option.textContent = opt;
-                selectCreneau.appendChild(option);
-            });
+            const option = document.createElement("option");
+            option.value = opt;
+            option.textContent = opt;
+            selectCreneau.appendChild(option);
         });
+        });
+    </script>
+
 
     </script>
 
