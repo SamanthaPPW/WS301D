@@ -18,9 +18,9 @@ class ReservationType extends AbstractType
 
         $builder
             ->add('nom_proprio', TextType::class, ['label' => 'Nom complet du propriétaire'])
-            ->add('telephone', TelType::class, ['label' => 'Téléphone'])
-            ->add('email', EmailType::class, ['label' => 'Email'])
-            ->add('adresse', TextType::class, ['label' => 'Adresse'])
+            ->add('telephone', TelType::class, ['label' => 'Téléphone portable du propriétaire'])
+            ->add('email', EmailType::class, ['label' => 'Email du propriétaire'])
+            ->add('adresse', TextType::class, ['label' => 'Adresse postale'])
             ->add('code_postal', TextType::class, ['label' => 'Code postal'])
             ->add('ville', TextType::class, ['label' => 'Ville'])
             ->add('nom_animal', TextType::class, ['label' => 'Nom de votre animal', 'required' => false])
@@ -29,8 +29,8 @@ class ReservationType extends AbstractType
                 'choices' => [
                     'Chien' => 'chien',
                     'Chat' => 'chat',
-                    'Lapin' => 'lapin',
-                    'Autre' => 'autre'
+                    'Lapin' => 'lapin'
+                    //'Autre' => 'autre'
                 ],
                 'expanded' => true,
                 'multiple' => false,

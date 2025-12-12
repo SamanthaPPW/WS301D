@@ -12,6 +12,23 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+        {% block header %}
+            <header>
+                <nav>
+                    <ul>
+                        <li><img src="logo.svg" alt="Logo Patoune" title="Logo Patoune"> </li>
+                    </ul>
+                    <ul>
+                        <li><a href="{{ path('app_accueil') }}">Accueil</a></li>
+                        <li><a href="#">Rendez-vous</a></li>
+                        <li><a href="{{ path('app_services') }}">Services</a></li>
+                        <li><a href="{{ path('app_galerie') }}">Galerie</a></li>
+                        <li><a href="{{ path('app_actualite') }}">Actualité</a></li>
+                    </ul>
+                </nav>
+            </header>
+        {% endblock %}
+        {% endblock %}
     </body>
 </html>
