@@ -1,16 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block title %}Patoune{% endblock %}
 
 {% block body %}
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <header>
+        <nav>
+            <ul>
+                <img src="{{ ('images/logo_patoune.png') }}" alt="Logo">
+                <p><a href="{{  path('accueil') }}">Accueil</a></p>
+                <p>Rendez-vous</p>
+                {#   <p><a href="{{  path('rendez-vous') }}">Rendez-vous</a></p> #}
+                <p><a href="{{  path('services') }}">Services</a></p>
+                <p>Galerie</p>
+                <p>Actualité</p>
+                {# <p><a href="{{  path('souvenir') }}">Galerie</a></p>
+                <p><a href="{{ path('actualité') }}">Actualité</a></p> #}
+            </ul>
+        </nav>
+    </header>
 
-    This friendly message is coming from:
+    <h1>Bienvenue chez Patoune</h1>
+
+    <img src="{{ ('images/teckel_bulles.png') }}" alt="Teckel_bulles">
+    <h2>Chez </h2>
+    <img src="{{ ('images/logo_patoune.png') }}" alt="Logo">
     <ul>
-        <li>Your controller at <code>/var/www/sae301/src/Controller/AccueilController.php</code></li>
-        <li>Your template at <code>/var/www/sae301/templates/accueil/index.html.twig</code></li>
+        <p>Depuis 2018, Patoune vous propose des services de toilettage à domicile dans l'Aube, que ce soit pour vos chiens ou pour vos chats.</p>
+        <p>Toilettage complet, ainsi que bain, tonte, peignage vous est proposé dans nos services.  <a href="{{ path('services') }}">Page des services</a></p>
+        <br>
+        <p>Chez Patoune, nous vous proposons également de voir des souvenirs du passage de vos animaux. (lein vers ka galerie, en commentaire pour le moment){# <a href="{{  path('souvenir') }}">Page de la galerie</a> #}</p>
+        <br>
+        <br>
+        <p>Patoune était tout d'abord un salon de toilettage classique mais malheureusement, le COVID a eu beaucoup d'impact.</p>
+        <p>Pendant le COVID, Patoune a fermé ses portes pour cause de manque de clients.</p>
+        <br>
+        <p>Mais les deux propriétaires ont décidé, après le COVID de réouvrir leur porte en tant que toiletteur à domicile afin d'apporter le meilleur services possibles à leur client.</p>
+        <img src="{{ ('images/chat_serviette.png') }}" alt="Chat dans sa serviette">
+        <br>
+        <br>
+        <br>
+        <img src="{{ ('images/camionette_patoune.png') }}" alt="Camionette de Patoune">
     </ul>
+
+    <footer>
+        <ul>
+            <h1>Contact</h1>
+            <p>Téléphone : 06 09 30 30 02</p>
+            <p>Adresse email: patoune@toiletteur.fr</p>
+            <p>Instagram : toiletteur_patoune</p>
+            <p>Facebook : toiletteur_patoune</p>
+            <br>
+            <p>Les 3 icônes</p>
+            <br>
+            <h2>Horaires</h2>
+            <p>Lundi - Fermé</p>
+            <p>Mardi - 8h30-13h & 14h30-19h</p>
+            <p>Mercredi - 8h30-13h & 14h30-19h</p>
+            <p>Jeudi - 8h30-13h & 14h30-19h</p>
+            <p>Vendredi - 8h30-13h & 14h30-19h</p>
+            <p>Samedi - 8h30-13h & 14h30-19h</p>
+            <p>Dimanche - Fermé</p>
+        </ul>
+    </footer>
 </div>
 {% endblock %}
