@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ServicesController extends AbstractController
 {
-    #[Route('/services', name: 'services')]
+    #[Route('/services', name: 'app_services')]
     public function index(Request $request, EntityManagerInterface $em): Response
     {
         $racesJson = file_get_contents($this->getParameter('kernel.project_dir') . '/public/data/races.json');
