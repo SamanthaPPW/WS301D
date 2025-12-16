@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservations{% endblock %}
+
+{% block body %}
+    <h1>Reservations</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservation.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_proprio</th>
+                <td>{{ reservation.nomProprio }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ reservation.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ reservation.email }}</td>
+            </tr>
+            <tr>
+                <th>Creneau_date</th>
+                <td>{{ reservation.creneauDate ? reservation.creneauDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Creneau_heure</th>
+                <td>{{ reservation.creneauHeure }}</td>
+            </tr>
+            <tr>
+                <th>Animal</th>
+                <td>{{ reservation.animal }}</td>
+            </tr>
+            <tr>
+                <th>Race</th>
+                <td>{{ reservation.race }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ reservation.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Code_postal</th>
+                <td>{{ reservation.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ reservation.ville }}</td>
+            </tr>
+            <tr>
+                <th>Comportement_animal</th>
+                <td>{{ reservation.comportementAnimal }}</td>
+            </tr>
+            <tr>
+                <th>Nom_animal</th>
+                <td>{{ reservation.nomAnimal }}</td>
+            </tr>
+            <tr>
+                <th>Commentaires</th>
+                <td>{{ reservation.commentaires }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_reservation_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_reservation_edit', {'id': reservation.id}) }}">edit</a>
+
+    {{ include('admin_reservation/_delete_form.html.twig') }}
+{% endblock %}

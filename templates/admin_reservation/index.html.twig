@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservations index{% endblock %}
+
+{% block body %}
+    <h1>Reservations index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_proprio</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Creneau_date</th>
+                <th>Creneau_heure</th>
+                <th>Animal</th>
+                <th>Race</th>
+                <th>Adresse</th>
+                <th>Code_postal</th>
+                <th>Ville</th>
+                <th>Comportement_animal</th>
+                <th>Nom_animal</th>
+                <th>Commentaires</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.nomProprio }}</td>
+                <td>{{ reservation.telephone }}</td>
+                <td>{{ reservation.email }}</td>
+                <td>{{ reservation.creneauDate ? reservation.creneauDate|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.creneauHeure }}</td>
+                <td>{{ reservation.animal }}</td>
+                <td>{{ reservation.race }}</td>
+                <td>{{ reservation.adresse }}</td>
+                <td>{{ reservation.codePostal }}</td>
+                <td>{{ reservation.ville }}</td>
+                <td>{{ reservation.comportementAnimal }}</td>
+                <td>{{ reservation.nomAnimal }}</td>
+                <td>{{ reservation.commentaires }}</td>
+                <td>
+                    <a href="{{ path('app_admin_reservation_show', {'id': reservation.id}) }}">show</a>
+                    <a href="{{ path('app_admin_reservation_edit', {'id': reservation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_reservation_new') }}">Create new</a>
+{% endblock %}
