@@ -3,10 +3,43 @@
 {% block title %}Réservation{% endblock %}
 
 {% block body %}
-    <img src="{{ ('images/.png') }}" alt="Peigne">
+    <a href="{{ path('app_accueil') }}">< Retour vers l'accueil</a>
+    <img src="{{ ('images/peigne.svg') }}" alt="Peigne">
     <h1>Services</h1>
-    <p></p>
-    <h6>Réservation</h6>
+        <ul>
+            <p>Chez Patoune, nous vpus proposons plusieurs services afin d'apporter le meilleur à vos animaux.</p>
+            <p>(Un bain est toujours accompagné de son séchage)</p>
+        </ul>
+    <br>
+    <h2>Toilettage complet</h2>
+    <ul>
+        <p>Il est composé d'une tonte, d'un bain et d'un peignage.</p>
+    </ul>
+    <br>
+    <h2>Toilettage à la carte</h2>
+    <ul>
+        <li>Tonte classique uniquement</li>
+        <li>Coupe aux ciseaux uniquement</li>
+        <li>Tonte avec bain</li>
+        <li>Coupe aux ciseaux avec bain</li>
+        <li>Bain sans peignage</li>
+        <li>Bain avec peignage</li>
+        <li>Peignage uniquement</li>
+    </ul>
+    <br>
+    <img src="{{ asset('images/Nox.png') }}" alt="Nox">
+    <br>
+    <h2>Mon secteur</h2>
+    <img src="{{ asset('images/Carte.png') }}" alt="Carte">
+    <br>
+    <h2>Tarifs</h2>
+    <img src="{{ asset('images/Tableau_tarifs.png') }}" alt="Tableau des tarifs">
+    <br>
+    <h2>Réservation</h2>
+    <br>
+    <ul>
+        <p>Chez Patoune, nous vous proposons plusieurs méthodes de prise de rendez-vous, par mail, par téléphone et sur les réseaux.</p>
+    </ul>
 
     {{ form_start(form) }}
 
