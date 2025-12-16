@@ -3,18 +3,34 @@
 {% block title %}Hello SouvenirController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <a href="{{ path('app_accueil') }}" alt="Retour à l'accueil">< Retour à l'accueil</a>
+    <br>
+    <h1>Galerie</h1>
+    <img src="{{ asset('images/camera.svg') }}" alt="Camera">
+    <br>
+    <img src="{{ asset('images/Tonte.jpg') }}" alt="CHien en tonte">
+    <br>
+    <img src="{{ asset('images/Coupe_ciseaux.jpg') }}" alt="Chien en coupe aux ciseaux">
+    <br>
+    <img src="{{ asset('images/Coupage_de_griffe.jpg') }}" alt="Chien entrain de se faire couper les griffes">
+    <br>
+    <img src="{{ asset('images/Bain_chien.svg') }}" alt="Chien entrain de prendre son bain">
+    <br>
+    <img src="{{ asset('images/Séchage.jpg') }}" alt="Chien entrain de se faire sécher">
+    <br>
+    <img src="{{ asset('images/Séchage_2.jpg') }}" alt="Chien entrain de se faire sécher au pulseur">
+    <br>
+    <img src="{{ asset('images/Peignage.jpg') }}" alt="Chien entrain de se faire brosser">
+    <br>
+    <img src="{{ asset('images/Chocho.svg') }}" alt="Chocho">
+    <br>
+    <img src="{{ asset('images/Chien_content.svg') }}" alt="Chien content">
+    <br>
+    <img src="{{ asset('images/Chat_tonte.jpg') }}" alt="Chat en tonte">
+    <br>
+    <img src="{{ asset('images/Chat_bain-2.jpg') }}" alt="Chat entrain de prendre un bain">
+    <br>
+    <img src="{{ asset('images/Chat séchage.jpg') }}" alt="Chat entrain de se faire sécher">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus aliquam distinctio dolorem fugit laboriosam nam numquam officiis recusandae voluptates! Assumenda commodi error laboriosam, officiis porro quaerat quibusdam quisquam tenetur! Blanditiis, consectetur corporis, cum dicta dolorem doloremque ducimus ea eaque labore nesciunt non perspiciatis placeat quisquam rem repellat saepe, suscipit!</p>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/WS301D/src/Controller/SouvenirController.php</code></li>
-        <li>Your template at <code>/var/www/WS301D/templates/souvenir/index.html.twig</code></li>
-    </ul>
-</div>
 {% endblock %}
