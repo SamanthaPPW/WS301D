@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Patoune{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <a href="{{ path('app_accueil') }}">< Retour vers l'accueil</a>
+        <h1>Actualité</h1>
+        <img src="{{ asset('images/actualite.svg') }}" alt="Actualite">
+        <br>
+        <img src="{{ asset('images/3_premieres_actu.svg') }}" alt="3 actualités">
+        <br>
+        <img src="{{ asset('images/Points oranges.svg') }}" alt="Point oranges">
+        <br>
+        <img src="{{ asset('images/3_dernires_actus.svg') }}" alt="3 autres actualités">
+        <br>
+        <img src="{{ asset('images/Points oranges.svg') }}" alt="Point oranges">
+    </div>
+{% endblock %}
