@@ -20,7 +20,13 @@ class Reservations
     private ?string $nom_proprio = null;
 
     #[ORM\Column(length: 20)]
+    #[Assert\NotBlank(message: "Le téléphone est obligatoire.")]
+    #[Assert\Regex(
+        pattern: '/^0[1-9](\d{2}){4}$/',
+        message: 'Le numéro de téléphone doit être valide (ex: 0612345678).'
+    )]
     private ?string $telephone = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -55,6 +61,11 @@ class Reservations
     private ?string $adresse = null;
 
     #[ORM\Column(length: 5)]
+    #[Assert\NotBlank(message: "Le code postal est obligatoire.")]
+    #[Assert\Regex(
+        pattern: '/^\d{5}$/',
+        message: 'Le code postal doit contenir exactement 5 chiffres.'
+    )]
     private ?string $code_postal = null;
 
     #[ORM\Column(length: 255)]
@@ -68,6 +79,9 @@ class Reservations
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaires = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $prestation = null;
 
     public function getId(): ?int
     {
@@ -225,6 +239,18 @@ class Reservations
     public function setCommentaires(?string $commentaires): static
     {
         $this->commentaires = $commentaires;
+
+        return $this;
+    }
+
+    public function getPrestation(): ?string
+    {
+        return $this->prestation;
+    }
+
+    public function setPrestation(string $prestation): static
+    {
+        $this->prestation = $prestation;
 
         return $this;
     }

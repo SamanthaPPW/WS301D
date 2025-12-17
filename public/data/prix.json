@@ -1,0 +1,6 @@
+{
+    "poils_courts": {"toilettage_complet": 65, "tonte_bain": 45, "tonte_classique": 30, "ciseaux_bain": 55, "ciseaux": 40, "bain_peignage": 25, "bain": 15, "peignage": 10},
+    "poils_moderes": {"toilettage_complet": 75, "tonte_bain": 55, "tonte_classique": 40, "ciseaux_bain": 65, "ciseaux": 50, "bain_peignage": 35, "bain": 25, "peignage": 20},
+    "poils_longs": {"toilettage_complet": 85, "tonte_bain": 65, "tonte_classique": 50, "ciseaux_bain": 75, "ciseaux": 60, "bain_peignage": 45, "bain": 35, "peignage": 30},
+    "poils_speciaux": {"toilettage_complet": 95, "tonte_bain": 75, "tonte_classique": 60, "ciseaux_bain": 85, "ciseaux": 70, "bain_peignage": 55, "bain": 45, "peignage": 40}
+}

@@ -18,7 +18,7 @@
     <img src="{{ ('images/peigne.svg') }}" alt="Peigne">
     <h1>Services</h1>
         <ul>
-            <p>Chez Patoune, nous vpus proposons plusieurs services afin d'apporter le meilleur à vos animaux.</p>
+            <p>Chez Patoune, nous vous proposons plusieurs services afin d'apporter le meilleur à vos animaux.</p>
             <p>(Un bain est toujours accompagné de son séchage)</p>
         </ul>
     <br>
@@ -130,6 +130,13 @@
             {{ form_widget(form.commentaires) }}
             {{ form_errors(form.commentaires) }}
         </div>
+
+        <div class="form-group">
+            {{ form_label(form.prestation) }}
+            {{ form_widget(form.prestation) }}
+            {{ form_errors(form.prestation) }}
+        </div>
+        <p id="prix-estime">Prix estimé : 0€</p>
     </fieldset>
 
     <div class="form-group">
@@ -141,52 +148,68 @@
     <script>
         const selectRace = document.querySelector("select[name='reservation[race]']");
         const selectCreneau = document.querySelector("select[name='reservation[creneau_heure]']");
+        const prestationSelect = document.querySelector("select[name='reservation[prestation]']");
+        const prixEstime = document.getElementById('prix-estime');
+        const animalInputs = document.querySelectorAll("input[name='reservation[animal]']");
+        const dateInput = document.querySelector("input[name='reservation[creneau_date]']");
+        const submitBtn = document.querySelector("button[type='submit']");
+        const errorDiv = document.getElementById('date-error');
+
         const racesData = {{ racesData|json_encode|raw }};
         const allCreneaux = {{ allCreneaux|json_encode|raw }};
-        const animalInputs = document.querySelectorAll("input[name='reservation[animal]']");
+        const prixParPoils = {{ prixParPoils|json_encode|raw }};
 
-        function clearOptions(select, label="Sélectionner") {
-            select.innerHTML = `<option value=''>${label}</option>`;
+        // Fonction pour vider une select
+        function clearOptions(select, placeholder="Sélectionner") {
+            select.innerHTML = `<option value="">${placeholder}</option>`;
         }
 
+        // Remplir les races en fonction de l'animal choisi
         function populateRaces(animalType) {
-            clearOptions(selectRace);
+            clearOptions(selectRace, "Sélectionner une race");
+            clearOptions(selectCreneau, "Sélectionner un créneau");
             if (!animalType || !racesData[animalType]) return;
+
             Object.keys(racesData[animalType]).forEach(race => {
                 const option = document.createElement("option");
                 option.value = race;
                 option.textContent = race;
                 selectRace.appendChild(option);
             });
-            clearOptions(selectCreneau);
         }
 
-        animalInputs.forEach(input => {
-            input.addEventListener("change", e => populateRaces(e.target.value));
-        });
-
-        // Au chargement
-        const checkedAnimal = document.querySelector("input[name='reservation[animal]']:checked");
-        if (checkedAnimal) populateRaces(checkedAnimal.value);
-
-        selectRace.addEventListener("change", () => {
+        // Mettre à jour les créneaux et le prix
+        function updateCreneauxEtPrix() {
             const animalType = document.querySelector("input[name='reservation[animal]']:checked")?.value;
             const race = selectRace.value;
-            clearOptions(selectCreneau);
-            if (!animalType || !race || race === "autre") return;
-            const typePoils = racesData[animalType][race];
-            allCreneaux[typePoils].forEach(creneau => {
-                const option = document.createElement("option");
-                option.value = creneau;
-                option.textContent = creneau;
-                selectCreneau.appendChild(option);
-            });
-        });
+            const prestation = prestationSelect.value;
 
-        const dateInput = document.querySelector("input[name='reservation[creneau_date]']");
-        const submitBtn = document.querySelector("button[type='submit']");
-        const errorDiv = document.getElementById('date-error');
+            // Créneaux
+            clearOptions(selectCreneau, "Sélectionner un créneau");
+            if (animalType && race && race !== "autre") {
+                const typePoils = racesData[animalType][race];
+                if (!allCreneaux[typePoils] || !Array.isArray(allCreneaux[typePoils])) {
+                    return;
+                }
 
+                allCreneaux[typePoils].forEach(creneau => {
+                    const option = document.createElement("option");
+                    option.value = creneau;
+                    option.textContent = creneau;
+                    selectCreneau.appendChild(option);
+                });
+            }
+
+            // Prix
+            const typePoils = racesData[animalType]?.[race];
+            if (typePoils && prestation) {
+                prixEstime.textContent = "Prix estimé : " + prixParPoils[typePoils][prestation] + "€";
+            } else {
+                prixEstime.textContent = "Prix estimé : 0€";
+            }
+        }
+
+        // Vérifier si la date est un dimanche ou lundi
         function checkDay() {
             const selectedDate = new Date(dateInput.value);
             const day = selectedDate.getDay(); // 0 = dimanche, 1 = lundi
@@ -199,10 +222,22 @@
             }
         }
 
-        // Vérifie à chaque changement
+        // Écouteurs
+        animalInputs.forEach(input => input.addEventListener("change", () => {
+            populateRaces(input.value);
+            updateCreneauxEtPrix();
+        }));
+
+        selectRace.addEventListener("change", updateCreneauxEtPrix);
+        prestationSelect.addEventListener("change", updateCreneauxEtPrix);
         dateInput.addEventListener("change", checkDay);
-        // Vérifie au chargement si une date est déjà sélectionnée
+
+        // Initialisation
+        clearOptions(selectRace, "Sélectionner une race");
+        clearOptions(selectCreneau, "Sélectionner un créneau");
         checkDay();
+
     </script>
+
 
 {% endblock %}

@@ -1,11 +1,8 @@
-{# twig #}
-{# templates/services/show.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Détails de la réservation{% endblock %}
 
 {% block body %}
-    {# Affiche correctement les flashs #}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
             <div class="flash-{{ label }}">{{ message }}</div>
