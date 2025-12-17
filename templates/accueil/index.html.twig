@@ -8,9 +8,9 @@
     <header>
         <img src="{{ ('images/logo_patoune.png') }}" alt="Logo">
         <nav>
-            <a href="{{  path('accueil') }}">Accueil</a>
+            <a href="{{  path('app_accueil') }}">Accueil</a>
             <a {#href="{{  path('rendez-vous') }}"#}>Rendez-vous</a>
-            <a href="{{  path('services') }}">Services</a>
+            <a href="{{  path('app_services') }}">Services</a>
             <a {#href="{{  path('souvenir') }}"#}>Galerie</a>
             <a {#href="{{  path('actualité') }}"#}>Actualité</a>
         </nav>
@@ -19,14 +19,14 @@
     <h1>Bienvenue chez Patoune</h1>
 
     <img src="{{ ('images/teckel_bulles.png') }}" alt="Teckel_bulles">
-    <h2>Chez </h2>
-    <img src="{{ ('images/logo_patoune.png') }}" alt="Logo">
+    <h2>Chez <img src="{{ ('images/Petit_patoune.svg') }}" alt="Logo"></h2>
     <ul>
         <p>Depuis 2018, Patoune vous propose des services de toilettage à domicile dans l'Aube, que ce soit pour vos chiens ou pour vos chats.</p>
         <p>Toilettage complet, ainsi que bain, tonte, peignage vous est proposé dans nos services.  <a href="{{ path('services') }}">Page des services</a></p>
         <br>
         <p>Chez Patoune, nous vous proposons également de voir des souvenirs du passage de vos animaux. (lein vers ka galerie, en commentaire pour le moment){# <a {#href="{{  path('souvenir') }}"#}>Page de la galerie</a> #}</p>
         <br>
+        <img src="{{ asset('images/Baignoire_Patoune.svg') }}" alt="Baignoire de Patoune">
         <br>
         <p>Patoune était tout d'abord un salon de toilettage classique mais malheureusement, le COVID a eu beaucoup d'impact.</p>
         <p>Pendant le COVID, Patoune a fermé ses portes pour cause de manque de clients.</p>
