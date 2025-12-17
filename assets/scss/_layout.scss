@@ -1,0 +1,58 @@
+$Bright : #FFFFFF;
+$Light : #FFFAF4;
+$Medium : #9D9081;
+$Dark : #463D31;
+
+$Main-Light : #FF9B45;
+$Main-Medium : #D5451B;
+$Main-Dark : #521C0D;
+
+$Contrast-Light : #DBF7FF;
+$Contrast-Medium : #ADE3F2;
+$Contrast-Dark : #2ABAE4;
+
+$Status-Valid : #59AC77;
+$Status-Error : #E83F25;
+
+body{
+    background-color: $Light;
+    color: $Main-Dark;
+    font-family: arial;
+}
+
+a:visited,a:link{
+    font-weight: bold;
+    color: $Main-Dark;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    padding: 10px 100px;
+    justify-content: end;
+    height: 75px;
+    background-color: $Main-Dark;
+    & img{
+        position: absolute;
+        top: 10px;
+        left: 100px;
+        height: 115px;
+    }
+    & nav{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        width: 75%;
+        & a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            font-size: 18px;
+            padding: 15px;
+            background-color: $Light;
+            border-radius: 10px;
+        }
+    } 
+    
+}

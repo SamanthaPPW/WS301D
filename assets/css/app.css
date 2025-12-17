@@ -1,6 +1,51 @@
 body {
-  background: black;
-  color: white;
+  margin: 0;
+}
+
+a:visited, a:link {
+  text-decoration: none;
+}
+
+body {
+  background-color: #FFFAF4;
+  color: #521C0D;
+  font-family: arial;
+}
+
+a:visited, a:link {
+  font-weight: bold;
+  color: #521C0D;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px 100px;
+  justify-content: end;
+  height: 75px;
+  background-color: #521C0D;
+}
+header img {
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  height: 115px;
+}
+header nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 75%;
+}
+header nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: 18px;
+  padding: 15px;
+  background-color: #FFFAF4;
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=app.css.map */
