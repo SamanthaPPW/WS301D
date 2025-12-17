@@ -48,6 +48,16 @@ header nav a {
   border-radius: 10px;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+}
+h1 img {
+  height: 5em;
+}
+
 section#news {
   display: flex;
   flex-direction: column;
