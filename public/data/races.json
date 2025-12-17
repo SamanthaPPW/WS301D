@@ -1,5 +1,5 @@
 {
-    "chien": {
+    "Chien": {
         "Labrador Retriever": "poils_courts",
         "Golden Retriever": "poils_moderes",
         "Berger Allemand": "poils_longs",
@@ -33,7 +33,7 @@
         "Samoyède": "poils_longs",
         "Cavalier King Charles": "poils_moderes"
     },
-    "chat": {
+    "Chat": {
         "Européen": "poils_courts",
         "Maine Coon": "poils_longs",
         "Persan": "poils_longs",
@@ -57,7 +57,7 @@
         "Turc de Van": "poils_longs",
         "Exotic Shorthair": "poils_speciaux"
     },
-    "lapin": {
+    "Lapin": {
         "Lapin Nain": "poils_courts",
         "Bélier Nain": "poils_longs",
         "Bélier Français": "poils_longs",
