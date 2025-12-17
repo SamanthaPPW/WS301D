@@ -3,18 +3,61 @@
 {% block title %}Patoune{% endblock %}
 
 {% block body %}
+    <header>
+        <img src="{{ ('images/logo_patoune.png') }}" alt="Logo">
+        <nav>
+            <a {#href="{{  path('accueil') }}"#}>Accueil</a>
+            <a {#href="{{  path('rendez-vous') }}"#}>Rendez-vous</a>
+            <a {#href="{{  path('services') }}"#}>Services</a>
+            <a {#href="{{  path('souvenir') }}"#}>Galerie</a>
+            <a {#href="{{  path('actualité') }}"#}>Actualité</a>
+        </nav>
+    </header>
 
     <div class="example-wrapper">
-        <a href="{{ path('app_accueil') }}">< Retour vers l'accueil</a>
-        <h1>Actualité</h1>
-        <img src="{{ asset('images/actualite.svg') }}" alt="Actualite">
-        <br>
-        <img src="{{ asset('images/3_premieres_actu.svg') }}" alt="3 actualités">
-        <br>
-        <img src="{{ asset('images/Points oranges.svg') }}" alt="Point oranges">
-        <br>
-        <img src="{{ asset('images/3_dernires_actus.svg') }}" alt="3 autres actualités">
-        <br>
-        <img src="{{ asset('images/Points oranges.svg') }}" alt="Point oranges">
+        <section id="news">
+            <div class="container">
+            <article>
+                <img src="{{ asset('images/actu1-img.png') }}">
+                <h2>Nouveau toiletteur qui s’installe au centre ville de Troyes</h2>
+                <p>Un tout nouveau salon est ouvert pour accueillir vos chiens ainsi que vos chats. Coiffure, bains, massages seront disponible pour vos chouchous.</p>
+                <p class="date">2 Septembre 2025</p>
+            </article>
+            <article>
+                <img src="{{ asset('images/actu2-img.png') }}">
+                <h2>Toiletteur à domicile, la nouvelle tendance</h2>
+                <p>Aujourd’hui, plus besoin de vous déplacer chez le toiletteur, c’est le toiletteur qui se déplace à vous pour s’occuper de vos animaux. Si vous n’avez pas de baignoire pas de problème, une dépliable sera à disposition.</p>
+                <p class="date">30 Octobre 2025</p>
+            </article>
+            <article>
+                <img src="{{ asset('images/actu3-img.png') }}">
+                <h2>Nouveau record pour une toiletteuse</h2>
+                <p>Elle qui pensait aller toiletter une lapine tout à fait normal. Elle est finalement tombé sur une très (très) grande lapine, ce fut une bonne surprise qui a bien amusé l’heureux propriétaire de Minnie la lapine en voyant sa réaction.</p>
+                <p class="date">21 Mars 2025</p>
+            </article>
+        </div>
+        <img src="{{ asset('images/bullet.svg') }}" alt="" class="bullet">
+        <div class="container">
+            <article>
+                <img src="{{ asset('images/actu4-img.png') }}">
+                <h2>Toilettage canin</h2>
+                <p>Venez découvrir les nouveaux gagnants du concours de toilettage canin édition 2025. Des nouveaux talents se sont dévoilés durant cette éditions. Nous avons pu en interroger quelques un pour en apprendre un peu plus sur leur passion. </p>
+                <p class="date">30 Mai 2025</p>
+            </article>
+            <article>
+                <img src="{{ asset('images/actu5-img.png') }}">
+                <h2>Couper les griffes de son lapin</h2>
+                <p>Les toiletteurs et les vétérinaires rappellent qu’il est important de couper les griffes de son animal. Si elles sont trop grandes elles peuvent se recourber et le blesser à la patte. De plus, elles peuvent aussi se casser ou blesser quelqu’un involontairement.</p>
+                <p class="date">9 Mars 2025</p>
+            </article>
+            <article>
+                <img src="{{ asset('images/actu6-img.png') }}">
+                <h2>Sommeil au salon : le chat qui a trouvé le toilettage… trop relaxant</h2>
+                <p>Alors que Pumkin le chat se faisait toiletter il a fini par partir dans le monde des rêves pour une petite sieste. Dans une position plutôt improbable, ce qui a provoqué un fou rire dans la salle. Il était visiblement bien détendu.</p>
+                <p class="date">2 janvier 2025</p>
+            </article>
+        </div>
+        <img src="{{ asset('images/bullet.svg') }}" alt="" class="bullet">
+        </section>
     </div>
 {% endblock %}

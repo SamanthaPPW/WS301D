@@ -3,6 +3,17 @@
 {% block title %}Réservation{% endblock %}
 
 {% block body %}
+    <header>
+        <img src="{{ ('images/logo_patoune.png') }}" alt="Logo">
+        <nav>
+            <a {#href="{{  path('accueil') }}"#}>Accueil</a>
+            <a {#href="{{  path('rendez-vous') }}"#}>Rendez-vous</a>
+            <a {#href="{{  path('services') }}"#}>Services</a>
+            <a {#href="{{  path('souvenir') }}"#}>Galerie</a>
+            <a {#href="{{  path('actualité') }}"#}>Actualité</a>
+        </nav>
+    </header>
+
     <a href="{{ path('app_accueil') }}">< Retour vers l'accueil</a>
     <img src="{{ ('images/peigne.svg') }}" alt="Peigne">
     <h1>Services</h1>
