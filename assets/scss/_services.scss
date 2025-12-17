@@ -1,0 +1,38 @@
+fieldset{
+    display: flex;
+    flex-direction: column;
+    border: 10px solid $Main-Dark;
+    align-items: start;
+    gap: 25px;
+    margin: 30px 100px;
+    border-radius: 30px;
+    padding: 25px;
+    & div.form-group{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        &.small{
+            width: 150px;
+        }
+        &.medium{
+            width: 200px;
+        }
+        &.big{
+            width: 300px;
+        }
+        & input, textarea{
+            padding: 3px 10px;
+            border-radius: 10px;
+            border: 2px solid $Main-Dark;
+            min-height: 2em;
+            resize: vertical;
+        }
+        & label.required:after{
+            content: "*";
+        }
+        & div#reservation_animal{
+            display: flex;
+            gap: 10px;
+        }
+    }
+}

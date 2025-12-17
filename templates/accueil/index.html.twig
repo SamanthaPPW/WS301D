@@ -15,17 +15,18 @@
             <a {#href="{{  path('actualité') }}"#}>Actualité</a>
         </nav>
     </header>
+
     <h1>Bienvenue chez Patoune</h1>
 
     <img src="{{ ('images/teckel_bulles.png') }}" alt="Teckel_bulles">
-    <h2>Chez </h2>
-    <img src="{{ ('images/logo_patoune.png') }}" alt="Logo">
+    <h2>Chez <img src="{{ ('images/Petit_patoune.svg') }}" alt="Logo"></h2>
     <ul>
         <p>Depuis 2018, Patoune vous propose des services de toilettage à domicile dans l'Aube, que ce soit pour vos chiens ou pour vos chats.</p>
-        <p>Toilettage complet, ainsi que bain, tonte, peignage vous est proposé dans nos services.  <a href="{{ path('app_services') }}">Page des services</a></p>
+        <p>Toilettage complet, ainsi que bain, tonte, peignage vous est proposé dans nos services.  <a href="{{ path('services') }}">Page des services</a></p>
         <br>
-        <p>Chez Patoune, nous vous proposons également de voir des souvenirs du passage de vos animaux. (lein vers ka galerie, en commentaire pour le moment){# <a href="{{  path('souvenir') }}">Page de la galerie</a> #}</p>
+        <p>Chez Patoune, nous vous proposons également de voir des souvenirs du passage de vos animaux. (lein vers ka galerie, en commentaire pour le moment){# <a {#href="{{  path('souvenir') }}"#}>Page de la galerie</a> #}</p>
         <br>
+        <img src="{{ asset('images/Baignoire_Patoune.svg') }}" alt="Baignoire de Patoune">
         <br>
         <p>Patoune était tout d'abord un salon de toilettage classique mais malheureusement, le COVID a eu beaucoup d'impact.</p>
         <p>Pendant le COVID, Patoune a fermé ses portes pour cause de manque de clients.</p>
@@ -38,5 +39,25 @@
         <img src="{{ ('images/camionette_patoune.png') }}" alt="Camionette de Patoune">
     </ul>
 
+    <footer>
+        <ul>
+            <h1>Contact</h1>
+            <p>Téléphone : 06 09 30 30 02</p>
+            <p>Adresse email: patoune@toiletteur.fr</p>
+            <p>Instagram : toiletteur_patoune</p>
+            <p>Facebook : toiletteur_patoune</p>
+            <br>
+            <p>Les 3 icônes</p>
+            <br>
+            <h2>Horaires</h2>
+            <p>Lundi - Fermé</p>
+            <p>Mardi - 8h30-13h & 14h30-19h</p>
+            <p>Mercredi - 8h30-13h & 14h30-19h</p>
+            <p>Jeudi - 8h30-13h & 14h30-19h</p>
+            <p>Vendredi - 8h30-13h & 14h30-19h</p>
+            <p>Samedi - 8h30-13h & 14h30-19h</p>
+            <p>Dimanche - Fermé</p>
+        </ul>
+    </footer>
 </div>
 {% endblock %}
