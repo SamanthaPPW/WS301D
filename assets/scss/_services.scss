@@ -1,38 +1,83 @@
-fieldset{
-    display: flex;
-    flex-direction: column;
-    border: 10px solid $Main-Dark;
-    align-items: start;
-    gap: 25px;
-    margin: 30px 100px;
-    border-radius: 30px;
-    padding: 25px;
-    & div.form-group{
+main#galerie{
+    div#title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        & img{
+            height: 5em;
+        }
+    }
+
+    & div#container-1{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    & div#container-2 iframe{
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        height: 600px;
+        aspect-ratio: 1/2;
+    }
+
+    & div#container-3 img{
+        display: flex;
+        margin: 0 auto;
+    }
+
+    button{
+        margin-left: 100px;
+        border: $Main-Dark 2px solid;
+        padding: 10px 30px;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover{
+            background-color: $Main-Light;
+        }
+    }
+
+    fieldset{
         display: flex;
         flex-direction: column;
-        gap: 5px;
-        &.small{
-            width: 150px;
-        }
-        &.medium{
-            width: 200px;
-        }
-        &.big{
-            width: 300px;
-        }
-        & input, textarea{
-            padding: 3px 10px;
-            border-radius: 10px;
-            border: 2px solid $Main-Dark;
-            min-height: 2em;
-            resize: vertical;
-        }
-        & label.required:after{
-            content: "*";
-        }
-        & div#reservation_animal{
+        border: 10px solid $Main-Dark;
+        align-items: start;
+        gap: 25px;
+        margin: 30px 100px;
+        border-radius: 30px;
+        padding: 25px;
+        & .combined-form{
             display: flex;
-            gap: 10px;
+            gap: 25px;
+        }
+        & div.form-group{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            &.small input, &.small textarea{
+                width: 100px;
+            }
+            &.medium input, &.medium textarea{
+                width: 200px;
+            }
+            &.big input, &.big textarea{
+                width: 300px;
+            }
+            & input, textarea{
+                padding: 3px 10px;
+                border-radius: 10px;
+                border: 2px solid $Main-Dark;
+                min-height: 2em;
+                resize: vertical;
+            }
+            & label.required:after{
+                content: "*";
+            }
+            & div#reservation_animal{
+                display: flex;
+                gap: 10px;
+            }
         }
     }
 }

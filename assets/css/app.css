@@ -308,7 +308,41 @@ img.bullet {
   width: 80px;
 }
 
-fieldset {
+main#galerie div#title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+main#galerie div#title img {
+  height: 5em;
+}
+main#galerie div#container-1 {
+  display: flex;
+  justify-content: space-between;
+}
+main#galerie div#container-2 iframe {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  height: 600px;
+  aspect-ratio: 1/2;
+}
+main#galerie div#container-3 img {
+  display: flex;
+  margin: 0 auto;
+}
+main#galerie button {
+  margin-left: 100px;
+  border: #521C0D 2px solid;
+  padding: 10px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+main#galerie button:hover {
+  background-color: #FF9B45;
+}
+main#galerie fieldset {
   display: flex;
   flex-direction: column;
   border: 10px solid #521C0D;
@@ -318,31 +352,35 @@ fieldset {
   border-radius: 30px;
   padding: 25px;
 }
-fieldset div.form-group {
+main#galerie fieldset .combined-form {
+  display: flex;
+  gap: 25px;
+}
+main#galerie fieldset div.form-group {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-fieldset div.form-group.small {
-  width: 150px;
+main#galerie fieldset div.form-group.small input, main#galerie fieldset div.form-group.small textarea {
+  width: 100px;
 }
-fieldset div.form-group.medium {
+main#galerie fieldset div.form-group.medium input, main#galerie fieldset div.form-group.medium textarea {
   width: 200px;
 }
-fieldset div.form-group.big {
+main#galerie fieldset div.form-group.big input, main#galerie fieldset div.form-group.big textarea {
   width: 300px;
 }
-fieldset div.form-group input, fieldset div.form-group textarea {
+main#galerie fieldset div.form-group input, main#galerie fieldset div.form-group textarea {
   padding: 3px 10px;
   border-radius: 10px;
   border: 2px solid #521C0D;
   min-height: 2em;
   resize: vertical;
 }
-fieldset div.form-group label.required:after {
+main#galerie fieldset div.form-group label.required:after {
   content: "*";
 }
-fieldset div.form-group div#reservation_animal {
+main#galerie fieldset div.form-group div#reservation_animal {
   display: flex;
   gap: 10px;
 }

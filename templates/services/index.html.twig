@@ -14,77 +14,81 @@
         </nav>
     </header>
 
+    <main id="galerie">
     <a href="{{ path('app_accueil') }}">< Retour vers l'accueil</a>
-    <img src="{{ ('images/peigne.svg') }}" alt="Peigne">
-    <h1>Services</h1>
-        <ul>
-            <p>Chez Patoune, nous vous proposons plusieurs services afin d'apporter le meilleur à vos animaux.</p>
-            <p>(Un bain est toujours accompagné de son séchage)</p>
-        </ul>
-    <br>
-    <h2>Toilettage complet</h2>
-    <ul>
-        <p>Il est composé d'une tonte, d'un bain et d'un peignage.</p>
-    </ul>
-    <br>
-    <h2>Toilettage à la carte</h2>
-    <ul>
-        <li>Tonte classique uniquement</li>
-        <li>Coupe aux ciseaux uniquement</li>
-        <li>Tonte avec bain</li>
-        <li>Coupe aux ciseaux avec bain</li>
-        <li>Bain sans peignage</li>
-        <li>Bain avec peignage</li>
-        <li>Peignage uniquement</li>
-    </ul>
-    <br>
-    <img src="{{ asset('images/Nox.png') }}" alt="Nox">
-    <br>
-    <h2>Mon secteur</h2>
-    <img src="{{ asset('images/Carte.png') }}" alt="Carte">
-    <br>
-    <h2>Tarifs</h2>
-    <img src="{{ asset('images/Tableau_tarifs.png') }}" alt="Tableau des tarifs">
-    <br>
+
+    <div id="title">
+        <img src="{{ ('images/peigne.svg') }}" alt="Peigne">
+        <h1>Services</h1>
+    </div>
+
+    <div id="container-1">
+        <div>
+            <p>Chez Patoune, nous vous proposons plusieurs services afin d'apporter le meilleur à vos animaux.<br><br>(Un bain est toujours accompagné de son séchage)</p>
+            <h2>Toilettage complet</h2>
+            <p>Il est composé d'une tonte, d'un bain et d'un peignage.</p>
+            <h2>Toilettage à la carte</h2>
+            <ul>
+                <li>Tonte classique uniquement</li>
+                <li>Coupe aux ciseaux uniquement</li>
+                <li>Tonte avec bain</li>
+                <li>Coupe aux ciseaux avec bain</li>
+                <li>Bain sans peignage</li>
+                <li>Bain avec peignage</li>
+                <li>Peignage uniquement</li>
+            </ul>
+        </div>
+        <img src="{{ asset('images/Nox.png') }}" alt="Nox">
+    </div>
+
+    <div id="container-2">
+        <h2>Mon secteur</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d679205.940418029!2d3.4647756209482035!3d48.31923165907112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ee9f549feadc2b%3A0x30a5fb99a372610!2sAube!5e0!3m2!1sfr!2sfr!4v1767721633171!5m2!1sfr!2sfr" width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div id="container-3">
+        <h2>Tarifs</h2>
+        <img src="{{ asset('images/Tableau_tarifs.png') }}" alt="Tableau des tarifs">
+    </div>
+
     <h2>Réservation</h2>
-    <br>
-    <ul>
-        <p>Chez Patoune, nous vous proposons plusieurs méthodes de prise de rendez-vous, par mail, par téléphone et sur les réseaux.</p>
-    </ul>
+    <p>Chez Patoune, nous vous proposons plusieurs méthodes de prise de rendez-vous, par mail, par téléphone et sur les réseaux.</p>
 
     {{ form_start(form) }}
 
     <fieldset id="formulaire">
         <legend>Informations Générales</legend>
-        <div class="form-group">
+        <div class="form-group medium">
             {{ form_label(form.nom_proprio) }}
             {{ form_widget(form.nom_proprio) }}
             {{ form_errors(form.nom_proprio) }}
         </div>
-        <div class="form-group">
+        <div class="form-group small">
             {{ form_label(form.telephone) }}
             {{ form_widget(form.telephone) }}
             {{ form_errors(form.telephone) }}
         </div>
-        <div class="form-group">
+        <div class="form-group big">
             {{ form_label(form.email) }}
             {{ form_widget(form.email) }}
             {{ form_errors(form.email) }}
         </div>
-        <div class="form-group">
+        <div class="form-group big">
             {{ form_label(form.adresse) }}
             {{ form_widget(form.adresse) }}
             {{ form_errors(form.adresse) }}
         </div>
-        <div class="form-group">
-            {{ form_label(form.code_postal) }}
-            {{ form_widget(form.code_postal) }}
-            {{ form_errors(form.code_postal) }}
-        </div>
-        <div class="form-group">
-            {{ form_label(form.ville) }}
-            {{ form_widget(form.ville) }}
-            {{ form_errors(form.ville) }}
+        <div class="combined-form">
+            <div class="form-group small">
+                {{ form_label(form.code_postal) }}
+                {{ form_widget(form.code_postal) }}
+                {{ form_errors(form.code_postal) }}
+            </div>
+            <div class="form-group medium">
+                {{ form_label(form.ville) }}
+                {{ form_widget(form.ville) }}
+                {{ form_errors(form.ville) }}
+            </div>
         </div>
     </fieldset>
 
@@ -105,7 +109,7 @@
             {{ form_widget(form.race) }}
             {{ form_errors(form.race) }}
         </div>
-        <div class="form-group">
+        <div class="form-group big">
             {{ form_label(form.comportement_animal) }}
             {{ form_widget(form.comportement_animal) }}
             {{ form_errors(form.comportement_animal) }}
@@ -125,7 +129,7 @@
             {{ form_widget(form.creneau_heure) }}
             {{ form_errors(form.creneau_heure) }}
         </div>
-        <div class="form-group">
+        <div class="form-group big">
             {{ form_label(form.commentaires) }}
             {{ form_widget(form.commentaires) }}
             {{ form_errors(form.commentaires) }}
@@ -144,6 +148,38 @@
     </div>
 
     {{ form_end(form) }}
+    </main> 
+
+    <footer>
+        <div class="footer-container">
+            <h1>Contact</h1>
+            <div>
+                <ul>
+                    <li><img src="" alt=""><p class="footer-info">Téléphone</p><p class="footer-spacer">:</p><a>06 09 30 30 02</a></li>
+                    <li><img src="" alt=""><p class="footer-info">Adresse Email</p><p class="footer-spacer">:</p><a>patoune@toiletteur.fr</a></li>
+                    <li><img src="" alt=""><p class="footer-info">Instagram</p><p class="footer-spacer">:</p><a>toiletteur_patoune</a></li>
+                    <li><img src="" alt=""><p class="footer-info">Facebook</p><p class="footer-spacer">:</p><a>toiletteur_patoune</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-container">
+            <img src="{{ ('images/footer-img.svg') }}" alt="">
+        </div>
+        <div class="footer-container">
+            <h1>Horaires</h1>
+            <div>
+                <ul>
+                    <li><p class="footer-info">Lundi</p><p class="footer-spacer">:</p><p>Fermé</p></li>
+                    <li><p class="footer-info">Mardi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                    <li><p class="footer-info">Mercredi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                    <li><p class="footer-info">Jeudi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                    <li><p class="footer-info">Vendredi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                    <li><p class="footer-info">Samedi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                    <li><p class="footer-info">Dimanche</p><p class="footer-spacer">:</p><p>Fermé</p></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
     <script>
         const selectRace = document.querySelector("select[name='reservation[race]']");
