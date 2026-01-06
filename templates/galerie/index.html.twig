@@ -3,18 +3,61 @@
 {% block title %}Hello GalerieController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<header>
+    <img src="{{ asset('images/logo_patoune.png') }}" alt="Logo">
+    <nav>
+        <a href="{{  path('app_accueil') }}">Accueil</a>
+        <a href="/services#formulaire">Rendez-vous</a>
+        <a href="{{  path('app_services') }}">Services</a>
+        <a href="{{  path('app_galerie') }}">Galerie</a>
+        <a href="{{  path('app_actualite') }}">Actualité</a>
+    </nav>
+</header>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<main>
+    <div>
+        <img src="{{ asset('images/Souvenir_1.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_2.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_3.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_4.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_5.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_6.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_7.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_8.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_10.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_11.svg') }}" alt="image galerie">
+        <img src="{{ asset('images/Souvenir_12.svg') }}" alt="image galerie">
+    </div>
+</main>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/WS301D/src/Controller/GalerieController.php</code></li>
-        <li>Your template at <code>/var/www/WS301D/templates/galerie/index.html.twig</code></li>
-    </ul>
-</div>
+<footer>
+    <div class="footer-container">
+        <h1>Contact</h1>
+        <div>
+            <ul>
+                <li><img src="" alt=""><p class="footer-info">Téléphone</p><p class="footer-spacer">:</p><a>06 09 30 30 02</a></li>
+                <li><img src="" alt=""><p class="footer-info">Adresse Email</p><p class="footer-spacer">:</p><a>patoune@toiletteur.fr</a></li>
+                <li><img src="" alt=""><p class="footer-info">Instagram</p><p class="footer-spacer">:</p><a>toiletteur_patoune</a></li>
+                <li><img src="" alt=""><p class="footer-info">Facebook</p><p class="footer-spacer">:</p><a>toiletteur_patoune</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-container">
+        <img src="{{ ('images/footer-img.svg') }}" alt="">
+    </div>
+    <div class="footer-container">
+        <h1>Horaires</h1>
+        <div>
+            <ul>
+                <li><p class="footer-info">Lundi</p><p class="footer-spacer">:</p><p>Fermé</p></li>
+                <li><p class="footer-info">Mardi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                <li><p class="footer-info">Mercredi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                <li><p class="footer-info">Jeudi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                <li><p class="footer-info">Vendredi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                <li><p class="footer-info">Samedi</p><p class="footer-spacer">:</p><p>8h30 - 13h & 14h30 - 19h</p></li>
+                <li><p class="footer-info">Dimanche</p><p class="footer-spacer">:</p><p>Fermé</p></li>
+            </ul>
+        </div>
+    </div>
+</footer>
 {% endblock %}
