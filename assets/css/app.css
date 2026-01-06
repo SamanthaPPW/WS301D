@@ -347,4 +347,21 @@ fieldset div.form-group div#reservation_animal {
   gap: 10px;
 }
 
+.titre {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+}
+.titre img {
+  height: 4em;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 /*# sourceMappingURL=app.css.map */
