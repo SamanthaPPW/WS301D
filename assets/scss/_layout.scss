@@ -56,3 +56,47 @@ header{
     } 
     
 }
+
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: $Main-Dark;
+    margin-top: auto;
+    flex-wrap: wrap;
+    padding: 20px;
+    color: $Light;
+    & > div.footer-container{
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        & h1{
+            padding: 0;
+        }
+        & > div{
+            color: $Main-Dark;
+            display: flex;
+            flex-direction: column;
+            background-color: $Light;
+            padding: 20px;
+            border-radius: 20px;
+            & ul{
+                list-style: none;
+                & li{
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+            }
+        }
+        &:nth-child(1) .footer-info{
+            width: 105px;
+        }
+        &:nth-child(3) .footer-info{
+            width: 75px;
+        }
+        & > img{
+            height: 350px;
+            margin: auto 0;
+        }
+    }
+}
