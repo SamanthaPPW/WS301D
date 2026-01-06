@@ -6,6 +6,11 @@ a:visited, a:link {
   text-decoration: none;
 }
 
+* {
+  transition-duration: 0.3s;
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #FFFAF4;
   color: #521C0D;
@@ -15,6 +20,12 @@ body {
 a:visited, a:link {
   font-weight: bold;
   color: #521C0D;
+}
+
+h1.title {
+  align-items: center;
+  justify-content: center;
+  padding: 70px;
 }
 
 header {
@@ -46,6 +57,13 @@ header nav a {
   padding: 15px;
   background-color: #FFFAF4;
   border-radius: 10px;
+}
+header nav a:hover {
+  background-color: #FF9B45;
+}
+
+main {
+  padding: 50px 100px;
 }
 
 footer {
@@ -92,56 +110,33 @@ footer > div.footer-container > img {
   margin: auto 0;
 }
 
-body h1 {
+main#home div.container {
+  gap: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 50px;
+  line-height: 1.5em;
+}
+main#home div.container > img {
+  flex: 1;
+  margin: 0 auto;
+}
+main#home div.container > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+main#home div.container > div h2 {
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 70px;
+  gap: 10px;
 }
-body ul .Teckel_bulles_patoune {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-body ul .Teckel_bulles_patoune Teckel_bulles {
-  grid-column: 1;
-  grid-row: 1;
-  align-items: center;
-  justify-content: center;
-}
-body ul .Teckel_bulles_patoune Teckel_bulles h2 {
-  grid-column: 2;
-  grid-row: 1;
-  align-items: center;
-  justify-content: center;
-}
-body ul .Teckel_bulles_patoune Teckel_bulles h2 img {
-  grid-column: 2;
-  grid-row: 1;
-  align-items: center;
-  justify-content: center;
-}
-body ul .Teckel_bulles_patoune Teckel_bulles ul {
-  grid-column: 2;
-  grid-row: 2;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
-  justify-content: center;
-}
-body ul .Teckel_bulles_patoune Teckel_bulles ul Baignoire_de_Patoune {
-  grid-column: 2;
-  grid-row: 3;
-}
-body ul ul .text_2 {
-  background-color: yellow;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-body ul ul .text_2 Chat_dans_sa_serviette {
-  display: grid;
-  grid-column: 2;
-  grid-row: 1;
-  align-items: center;
-  justify-content: center;
+main#home img#home-truck {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
 }
 
 h1 {

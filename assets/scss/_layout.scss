@@ -25,6 +25,12 @@ a:visited,a:link{
     color: $Main-Dark;
 }
 
+h1.title {
+    align-items: center;
+    justify-content: center;
+    padding : 70px;
+}
+
 header{
     display: flex;
     align-items: center;
@@ -52,9 +58,16 @@ header{
             padding: 15px;
             background-color: $Light;
             border-radius: 10px;
+            &:hover{
+                background-color: $Main-Light;
+            }
         }
     } 
     
+}
+
+main{
+    padding: 50px 100px;
 }
 
 footer{

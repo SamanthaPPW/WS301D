@@ -9,42 +9,32 @@
         <img src="{{ asset('images/logo_patoune.png') }}" alt="Logo">
         <nav>
             <a href="{{  path('app_accueil') }}">Accueil</a>
-            <a {#href="{{  path('rendez-vous') #}}}">Rendez-vous</a>
+            <a href="/services#formulaire">Rendez-vous</a>
             <a href="{{  path('app_services') }}">Services</a>
             <a {#href="{{  path('souvenir') #}}}">Galerie</a>
             <a href="{{  path('app_actualite') }}">Actualité</a>
         </nav>
     </header>
 
-    <h1>Bienvenue chez Patoune</h1>
+    <main id="home">
+        <h1 class="title">Bienvenue chez Patoune</h1>
 
-    <div class="Teckel_bulles_patoune">
-        <img src="{{ asset('images/teckel_bulles.png') }}" alt="Teckel_bulles">
-        <h2>Chez <img src="{{ ('images/Petit_patoune.svg') }}" alt="Logo"></h2>
-        <ul class="text_1">
-            <p>Depuis 2018, Patoune vous propose des services de toilettage à domicile dans l'Aube, que ce soit pour vos chiens ou pour vos chats.</p>
-            <p>Toilettage complet, ainsi que bain, tonte, peignage vous est proposé dans nos services.  <a href="{{ path('app_services') }}">Page des services</a></p>
-            <br>
-            <p>Chez Patoune, nous vous proposons également de voir des souvenirs du passage de vos animaux. (lein vers ka galerie, en commentaire pour le moment){# <a {#href="{{  path('souvenir') }}" >Page de la galerie</a> #}</p>
-            <br>
-            <img src="{{ asset('images/Baignoire_Patoune.svg') }}" alt="Baignoire_de_Patoune">
-        </ul>
-    </div>
-    <ul>
-        <div class="text_2">
-            <img src="{{ asset('images/chat_serviette.png') }}" alt="chat_dans_sa_serviette">
-            <ul>
-                <p>Patoune était tout d'abord un salon de toilettage classique mais malheureusement, le COVID a eu beaucoup d'impact.</p>
-                <p>Pendant le COVID, Patoune a fermé ses portes pour cause de manque de clients.</p>
-                <br>
-                <p>Mais les deux propriétaires ont décidé, après le COVID de réouvrir leur porte en tant que toiletteur à domicile afin d'apporter le meilleur services possibles à leur client.</p>
-                <br>
-                <br>
-                <br>
-            </ul>
+        <div class="container">
+            <img src="{{ asset('images/teckel_bulles.png') }}" alt="Teckel_bulles">
+            <div>
+                <h2>Chez <img src="{{ ('images/Petit_patoune.svg') }}" alt="Logo"></h2>
+                <p>Depuis 2018, Patoune vous propose des services de toilettage à domicile dans l’Aube, que ce soit pour vos chiens ou vos chats. Toilettage complet, ainsi que bain, tonte, peignage vous est proposé dans nos services. (si clique sur lien emmener à la page des services).<br><br>Chez Patoune, nous vous proposons également de voir des souvenirs du passage de vos animaux. (lien vers souvenirs)</p>
+                <img src="{{ asset('images/Baignoire_Patoune.svg') }}" alt="Baignoire_de_Patoune">
+            </div>
         </div>
-        <img src="{{ asset('images/camionette_patoune.png') }}" alt="Camionette de Patoune">
-    </ul>
+        <div class="container">
+            <div>
+                <p>Patoune était à l'origine un salon de toilettage traditionnel. Cependant, la crise du COVID a fortement impacté son activité.<br><br>Durant cette période, les clients et leurs chiens ne pouvaient plus se faire chouchouter en raison des restrictions sanitaires. <br>En raison du au manque de clientèle, Patoune a donc dû fermer ses portes.<br><br>À la fin de la crise, les deux propriétaires ont fait le choix de relancer leur activité mais  en trouvant une alternative. <br>Elles ont donc investi dans une camionnette pour pouvoir se déplacer avec leur matériel directement chez les clients, dans le but de leur offrir une prestation adaptée et de qualité.</p>
+            </div>
+            <img src="{{ asset('images/chat_serviette.png') }}" alt="chat_dans_sa_serviette">
+        </div>
+        <img src="{{ asset('images/home-truck-path.svg') }}" alt="Camionette de Patoune" id="home-truck">
+    </main> 
 
     <footer>
     <div class="footer-container">

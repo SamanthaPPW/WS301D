@@ -5,3 +5,8 @@ body{
 a:visited,a:link{
     text-decoration: none;
 }
+
+*{
+    transition-duration: .3s;
+    scroll-behavior: smooth;
+}
