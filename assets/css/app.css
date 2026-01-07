@@ -332,16 +332,6 @@ main#galerie div#container-3 img {
   display: flex;
   margin: 0 auto;
 }
-main#galerie button {
-  margin-left: 100px;
-  border: #521C0D 2px solid;
-  padding: 10px 30px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-main#galerie button:hover {
-  background-color: #FF9B45;
-}
 main#galerie fieldset {
   display: flex;
   flex-direction: column;
@@ -385,6 +375,17 @@ main#galerie fieldset div.form-group div#reservation_animal {
   gap: 10px;
 }
 
+button {
+  margin-left: 100px;
+  border: #521C0D 2px solid;
+  padding: 10px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #FF9B45;
+}
+
 .titre {
   display: flex;
   justify-content: center;
@@ -400,6 +401,33 @@ main#galerie fieldset div.form-group div#reservation_animal {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
+}
+
+div#login {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 100px;
+  padding: 25px;
+  border: 5px solid #521C0D;
+  border-radius: 20px;
+  gap: 25px;
+  align-items: center;
+}
+div#login > div {
+  display: flex;
+  flex-direction: column;
+}
+
+div#login div {
+  width: 70%;
+}
+
+div#login input, textarea {
+  padding: 3px 10px;
+  border-radius: 10px;
+  border: 2px solid #521C0D;
+  min-height: 2em;
+  resize: vertical;
 }
 
 /*# sourceMappingURL=app.css.map */

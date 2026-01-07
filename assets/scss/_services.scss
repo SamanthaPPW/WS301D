@@ -27,17 +27,6 @@ main#galerie{
         margin: 0 auto;
     }
 
-    button{
-        margin-left: 100px;
-        border: $Main-Dark 2px solid;
-        padding: 10px 30px;
-        border-radius: 10px;
-        cursor: pointer;
-        &:hover{
-            background-color: $Main-Light;
-        }
-    }
-
     fieldset{
         display: flex;
         flex-direction: column;
@@ -79,5 +68,16 @@ main#galerie{
                 gap: 10px;
             }
         }
+    }
+}
+
+button{
+    margin-left: 100px;
+    border: $Main-Dark 2px solid;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover{
+    background-color: $Main-Light;
     }
 }
