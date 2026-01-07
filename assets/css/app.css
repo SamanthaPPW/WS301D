@@ -315,7 +315,8 @@ main#galerie div#title {
   gap: 10px;
 }
 main#galerie div#title img {
-  height: 5em;
+  height: 200px;
+  rotate: 20deg;
 }
 main#galerie div#container-1 {
   display: flex;
