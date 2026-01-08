@@ -329,9 +329,14 @@ main#galerie div#container-2 iframe {
   height: 600px;
   aspect-ratio: 1/2;
 }
-main#galerie div#container-3 img {
+main#galerie div#container-3 table {
   display: flex;
   margin: 0 auto;
+  justify-content: center;
+}
+main#galerie div#container-3 table td {
+  padding: 5px 10px;
+  border-bottom: 1px solid #521C0D;
 }
 main#galerie fieldset {
   display: flex;
